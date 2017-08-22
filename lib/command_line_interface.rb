@@ -1,11 +1,12 @@
 require "pry"
 require_relative "apicontroller.rb"
+
 def get_user_input
   gets.chomp.downcase
 end
 
 def selection_ids
-  cuisine_hash = {
+  {
     "american" => 1,
     "chinese" => 25,
     "barbecue" => 193,
@@ -45,6 +46,17 @@ def get_restaurant_card(restaurant_array)
   restaurant_array.shift
 end
 
+def push_to_database(restaurant_card)
+    name = restaurant_card["name"]
+    url = restaurant_card["url"]
+    address = restaurant_card["location"]["address"]
+    locality = restaurant_card["location"]["locality"]
+    price_range = restaurant_card["price_range"]
+    rating = restaurant_card["user_rating"]["aggregate_rating"]
+
+    Restaurant.find_or_create_by(name: name, url: url, address: address, locality: locality, price_range: price_range, rating: rating)
+end
+
 # def display_to_user(restaurant_card)
 #   puts "How does this place look?"
 #   restaurant_array.each do |restaurant_hash|
@@ -58,5 +70,3 @@ end
 #     end
 #   end
 # end
-
-def
