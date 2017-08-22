@@ -9,7 +9,7 @@ class ApiController
 			data_array << get_and_truncate(i, cuisine_id)
 			i += 20
 		end
-		data_array.flatten
+		data_array.flatten.shuffle
 
 	end
 
@@ -20,6 +20,33 @@ class ApiController
 		parsed.each do |restaurant_hash|
 			restaurant_hash["restaurant"].delete_if{|key, value| !wanted_keys.include?(key)}
 			end
+	end
+
+	def self.selection_ids
+		cuisine_hash = {
+			"american" => 1,
+			"chinese" => 25,
+			"barbecue" => 193,
+			"breakfast" => 182,
+			"cafe" => 30,
+			"cajun" => 491,
+			"deli" => 192,
+			"desserts" => 100,
+			"fast food" => 40,
+			"french" => 45,
+			"greek" => 156,
+			"indian" => 148,
+			"italian" => 55,
+			"japanese" => 60,
+			"korean" => 67,
+			"mexican" =>73,
+			"pizza" => 82,
+			"puerto rican" => 361,
+			"sushi" => 177,
+			"steak" => 141,
+			"thai" => 95,
+			"vietnamese" =>99
+		}
 	end
 
 end
