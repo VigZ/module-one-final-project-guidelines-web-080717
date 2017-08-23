@@ -8,6 +8,7 @@ end
 
 def find_or_create_user
   puts "Please enter a username."
+  get_user_input
   input = get_user_input
   User.find_or_create_by(username: input)
 end
